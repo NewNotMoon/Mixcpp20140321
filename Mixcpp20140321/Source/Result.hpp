@@ -1,9 +1,9 @@
-/*!
+ï»¿/*!
  * @file	NotMoon\Windows\Result.hpp
  * 
- * @brief	HRESULT ˆ—
+ * @brief	HRESULT å‡¦ç†
  * 
- * Copyright (c) 2014 VXŒ. All rights reserved.
+ * Copyright (c) 2014 æ–°ã€…æœˆ. All rights reserved.
  */
 #ifndef NOTMOON_WINDOWS_RESULT_HPP
 #define NOTMOON_WINDOWS_RESULT_HPP
@@ -47,7 +47,7 @@ namespace NotMoon
 			if( FAILED( result ) )
 			{
 				++count;
-				s << "[¸”s] ";							OutputDebugStringA( s.str().c_str() );	s.str( "" );	OutputDebugStringW( message );
+				s << "[å¤±æ•—] ";							OutputDebugStringA( s.str().c_str() );	s.str( "" );	OutputDebugStringW( message );
 				s << "\n\tDesc: " << format( result );	OutputDebugStringA( s.str().c_str() );	s.str( "" );
 				s << "\n\tDeta: ";						OutputDebugStringA( s.str().c_str() );	s.str( "" );	OutputDebugStringW( data );
 				s << "\n\tFile: ";						OutputDebugStringA( s.str().c_str() );	s.str( "" );	OutputDebugStringW( file );

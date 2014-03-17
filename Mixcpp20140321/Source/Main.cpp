@@ -1,7 +1,7 @@
-/*!
- * @brief	MixC++•×‹­‰ï@Tokyo VXŒ¢Direct2D‚ÆDirect3D11‚Ì‹¤—L(DXGI!.2)£‚ÌƒTƒ“ƒvƒ‹ƒR[ƒh
+ï»¿/*!
+ * @brief	MixC++å‹‰å¼·ä¼š@Tokyo æ–°ã€…æœˆï½¢Direct2Dã¨Direct3D11ã®å…±æœ‰(DXGI!.2)ï½£ã®ã‚µãƒ³ãƒ—ãƒ«ã‚³ãƒ¼ãƒ‰
  * 
- * Copyright (c) 2014 VXŒ. All rights reserved.
+ * Copyright (c) 2014 æ–°ã€…æœˆ. All rights reserved.
  */
 #define _WIN32_WINNT 0x0601
 
@@ -44,11 +44,11 @@ HWND setupWindow( int width, int height )
 	wcex.hCursor        = LoadCursor( nullptr, IDC_ARROW );
 	wcex.hbrBackground  = (HBRUSH)( COLOR_WINDOW + 1 );
 	wcex.lpszMenuName   = nullptr;
-	wcex.lpszClassName  = _T( "‚¤‚ñ‚±" );
+	wcex.lpszClassName  = _T( "ã†ã‚“ã“" );
 	wcex.hIconSm        = nullptr;
 	if( !RegisterClassEx( &wcex ) )
 	{
-		throw std::runtime_error{ "‚¤‚¡‚ñ‚Ç‚¤‚Æ‚¤‚ë‚­‚Å‚«‚Ü‚¹‚ñ‚Å‚µ‚½" };
+		throw std::runtime_error{ "ã†ãƒã‚“ã©ã†ã¨ã†ã‚ãã§ãã¾ã›ã‚“ã§ã—ãŸ" };
 	}
 
 	RECT rect ={ 0, 0, width, height };
@@ -56,12 +56,12 @@ HWND setupWindow( int width, int height )
 	const int windowWidth  = ( rect.right - rect.left );
 	const int windowHeight = ( rect.bottom - rect.top );
 
-	HWND window = CreateWindow( _T( "‚¤‚ñ‚±" ), _T( "MixC++•×‹­‰ï VXŒ 20140321" ),
+	HWND window = CreateWindow( _T( "ã†ã‚“ã“" ), _T( "MixC++å‹‰å¼·ä¼š æ–°ã€…æœˆ 20140321" ),
 		WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, 0, windowWidth, windowHeight,
 		nullptr, nullptr, nullptr, nullptr );
 	if( !window )
 	{
-		throw std::runtime_error{ "‚¤‚¡‚ñ‚Ç‚¤‚Â‚­‚ê‚Ü‚¹‚ñ‚Å‚µ‚½" };
+		throw std::runtime_error{ "ã†ãƒã‚“ã©ã†ã¤ãã‚Œã¾ã›ã‚“ã§ã—ãŸ" };
 	}
 
 	return window;
@@ -128,7 +128,7 @@ public:
 
 		RESULT
 		(
-			"Direct3DƒfƒoƒCƒX‚Ìì¬",
+			"Direct3Dãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆ",
 			D3D11CreateDevice
 			(
 				nullptr,
@@ -146,7 +146,7 @@ public:
 
 		RESULT
 		(
-			"DXGIƒfƒoƒCƒX‚Ìì¬",
+			"DXGIãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆ",
 			this->direct3D.device->QueryInterface<IDXGIDevice1>( &this->DXGI.device )
 		);
 		this->DXGI.device->SetMaximumFrameLatency( 1 );
@@ -157,7 +157,7 @@ public:
 			ZeroMemory( &option, sizeof option );
 			RESULT
 			(
-				"Direct2Dƒtƒ@ƒNƒgƒŠ‚Ìì¬",
+				"Direct2Dãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ä½œæˆ",
 				D2D1CreateFactory
 				(
 					D2D1_FACTORY_TYPE_SINGLE_THREADED,
@@ -172,7 +172,7 @@ public:
 		d2dFactory->GetDesktopDpi( &dpiX, &dpiY );
 		RESULT
 		(
-			"Direct2DƒfƒoƒCƒX‚Ìì¬",
+			"Direct2Dãƒ‡ãƒã‚¤ã‚¹ã®ä½œæˆ",
 			d2dFactory->CreateDevice(
 				this->DXGI.device,
 				&this->direct2D.device
@@ -182,7 +182,7 @@ public:
 
 		RESULT
 		(
-			"Direct2DƒfƒoƒCƒXƒRƒ“ƒeƒLƒXƒg‚Ìì¬",
+			"Direct2Dãƒ‡ãƒã‚¤ã‚¹ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã®ä½œæˆ",
 			this->direct2D.device->CreateDeviceContext(
 				D2D1_DEVICE_CONTEXT_OPTIONS_NONE,
 				&this->direct2D.deviceContext
@@ -190,21 +190,21 @@ public:
 		);
 		RESULT
 		(
-			"Direct2Dƒuƒ‰ƒV‚Ìì¬",
+			"Direct2Dãƒ–ãƒ©ã‚·ã®ä½œæˆ",
 			this->direct2D.deviceContext->CreateSolidColorBrush( D2D1::ColorF( 0, 0, 0 ), &this->direct2D.brush )
 		);
 
 		IDXGIAdapter *adapter;
 		RESULT
 		(
-			"DXGIƒAƒ_ƒvƒ^‚Ìæ“¾",
+			"DXGIã‚¢ãƒ€ãƒ—ã‚¿ã®å–å¾—",
 			this->DXGI.device->GetAdapter( &adapter )
 		);
 
 		IDXGIFactory2 *factory;
 		RESULT
 		(
-			"DXGIƒtƒ@ƒNƒgƒŠ‚Ìì¬",
+			"DXGIãƒ•ã‚¡ã‚¯ãƒˆãƒªã®ä½œæˆ",
 			adapter->GetParent( IID_PPV_ARGS( &factory ) )
 		);
 		adapter->Release();
@@ -225,7 +225,7 @@ public:
 
 		RESULT
 		(
-			"ƒXƒƒbƒvƒ`ƒFƒCƒ“‚ğì¬(for HWND)",
+			"ã‚¹ãƒ¯ãƒƒãƒ—ãƒã‚§ã‚¤ãƒ³ã‚’ä½œæˆ(for HWND)",
 			factory->CreateSwapChainForHwnd
 			(
 				this->direct3D.device,
@@ -240,7 +240,7 @@ public:
 
 		RESULT
 		(
-			"ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒg‚Ìæ“¾",
+			"ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®å–å¾—",
 			this->DXGI.swapchain->GetBuffer
 			(
 				0,
@@ -250,7 +250,7 @@ public:
 
 		RESULT
 		(
-			"ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgƒrƒ…[‚Ìì¬",
+			"ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆãƒ“ãƒ¥ãƒ¼ã®ä½œæˆ",
 			this->direct3D.device->CreateRenderTargetView
 			(
 				this->direct3D.buffer,
@@ -263,7 +263,7 @@ public:
 		IDXGISurface *surface;
 		RESULT
 		(
-			"DXGIƒT[ƒtƒFƒCƒX‚Ìæ“¾",
+			"DXGIã‚µãƒ¼ãƒ•ã‚§ã‚¤ã‚¹ã®å–å¾—",
 			this->DXGI.swapchain->GetBuffer
 			(
 				0,
@@ -282,7 +282,7 @@ public:
 
 		RESULT
 		(
-			"Direct2D‚ÌƒŒƒ“ƒ_[ƒ^[ƒQƒbƒg‚ğì¬Aİ’è",
+			"Direct2Dã®ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ä½œæˆã€è¨­å®š",
 			this->direct2D.deviceContext->CreateBitmapFromDxgiSurface
 			(
 				surface,
@@ -297,7 +297,7 @@ public:
 		IDWriteTextFormat* format;
 		RESULT
 		(
-			"DirectWriteƒtƒ@ƒNƒgƒŠì¬",
+			"DirectWriteãƒ•ã‚¡ã‚¯ãƒˆãƒªä½œæˆ",
 			DWriteCreateFactory(
 				DWRITE_FACTORY_TYPE_SHARED,
 				__uuidof( IDWriteFactory ),
@@ -306,7 +306,7 @@ public:
 		);
 		dwrite->CreateTextFormat
 		(
-			L"ƒƒCƒŠƒI",
+			L"ãƒ¡ã‚¤ãƒªã‚ª",
 			NULL,
 			DWRITE_FONT_WEIGHT_REGULAR,
 			DWRITE_FONT_STYLE_NORMAL,
@@ -317,8 +317,8 @@ public:
         );
 		dwrite->CreateTextLayout
 		(
-			L"MixC++•×‹­‰ï@Tokyo by VXŒ\nDirect2D‚ÆDirect3D‚Ì‹¤—L(DXGI1.2”Å)",
-			sizeof( L"MixC++•×‹­‰ï@Tokyo by VXŒ\nDirect2D‚ÆDirect3D‚Ì‹¤—L(DXGI1.2”Å)" ) / sizeof L"",
+			L"MixC++å‹‰å¼·ä¼š@Tokyo by æ–°ã€…æœˆ\nDirect2Dã¨Direct3Dã®å…±æœ‰(DXGI1.2ç‰ˆ)",
+			sizeof( L"MixC++å‹‰å¼·ä¼š@Tokyo by æ–°ã€…æœˆ\nDirect2Dã¨Direct3Dã®å…±æœ‰(DXGI1.2ç‰ˆ)" ) / sizeof L"",
 			format,
 			600,
 			100,

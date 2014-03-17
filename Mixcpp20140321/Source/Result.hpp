@@ -1,8 +1,8 @@
 /*!
  * @file	NotMoon\Windows\Result.hpp
- *
+ * 
  * @brief	HRESULT èàóù
- *
+ * 
  * Copyright (c) 2014 êVÅXåé. All rights reserved.
  */
 #ifndef NOTMOON_WINDOWS_RESULT_HPP
@@ -15,6 +15,10 @@ namespace NotMoon
 {
 	namespace Windows
 	{
+		/*!
+		 * @fn outputResult
+		 * @param result Result.
+		 */
 		static HRESULT outputResult( HRESULT result, const wchar_t* message, const wchar_t* data, const wchar_t* file, const wchar_t* func, int line )
 		{
 			static size_t count = 0;

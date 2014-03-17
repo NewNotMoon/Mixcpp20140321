@@ -1,6 +1,6 @@
 /*!
  * @brief	MixC++勉強会@Tokyo 新々月｢Direct2DとDirect3D11の共有(DXGI!.2)｣のサンプルコード
- *
+ * 
  * Copyright (c) 2014 新々月. All rights reserved.
  */
 #define _WIN32_WINNT 0x0601
@@ -155,14 +155,17 @@ public:
 		{
 			D2D1_FACTORY_OPTIONS option;
 			ZeroMemory( &option, sizeof option );
-			RESULT(
-				"Direct2Dのファクトリの作成",
-				D2D1CreateFactory(
+			RESULT
+			(
+				"Direct2Dファクトリの作成",
+				D2D1CreateFactory
+				(
 					D2D1_FACTORY_TYPE_SINGLE_THREADED,
 					__uuidof( ID2D1Factory1 ),
 					&option,
-					reinterpret_cast<void**>( &d2dFactory ) )
-				);
+					reinterpret_cast<void**>( &d2dFactory )
+				)
+			);
 		}
 		float dpiX;
 		float dpiY;
@@ -179,7 +182,7 @@ public:
 
 		RESULT
 		(
-			"Direct2Dデバイスコンテクストの作成",
+			"Direct2Dデバイスコンテキストの作成",
 			this->direct2D.device->CreateDeviceContext(
 				D2D1_DEVICE_CONTEXT_OPTIONS_NONE,
 				&this->direct2D.deviceContext
@@ -201,7 +204,7 @@ public:
 		IDXGIFactory2 *factory;
 		RESULT
 		(
-			"DXGIのファクトリの作成",
+			"DXGIファクトリの作成",
 			adapter->GetParent( IID_PPV_ARGS( &factory ) )
 		);
 		adapter->Release();
@@ -237,7 +240,7 @@ public:
 
 		RESULT
 		(
-			"レンダーターゲットの取得（D3D11）",
+			"レンダーターゲットの取得",
 			this->DXGI.swapchain->GetBuffer
 			(
 				0,
@@ -260,7 +263,7 @@ public:
 		IDXGISurface *surface;
 		RESULT
 		(
-			"サーフェイスの取得",
+			"DXGIサーフェイスの取得",
 			this->DXGI.swapchain->GetBuffer
 			(
 				0,
@@ -301,7 +304,8 @@ public:
 				reinterpret_cast<IUnknown**>( &dwrite )
 			)
 		);
-		dwrite->CreateTextFormat(
+		dwrite->CreateTextFormat
+		(
 			L"メイリオ",
 			NULL,
 			DWRITE_FONT_WEIGHT_REGULAR,
@@ -361,6 +365,7 @@ int WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 			{
 				DispatchMessage( &msg );
 			}
+			Sleep( 1 );
 		}
 		while( msg.message != WM_QUIT );
 	}

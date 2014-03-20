@@ -94,6 +94,10 @@ private:
 	IDWriteTextLayout* layout;
 
 public:
+	Sample()
+	{
+		this->initialize();
+	}
 	~Sample()
 	{
 		this->release();
@@ -350,10 +354,9 @@ int WINAPI WinMain( HINSTANCE, HINSTANCE, LPSTR, int )
 	::_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
 #endif
 	MSG msg;
-	Sample sample;
 	try
 	{
-		sample.initialize();
+		Sample sample;
 		do
 		{
 			BOOL r = PeekMessage( &msg, nullptr, 0, 0, PM_REMOVE );
